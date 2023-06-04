@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold text-body-emphasis">QR Copy</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Copy and paste across devices text using QR code, without Internet</p>
+      <div class="input-group mb-4">
+        <input type="text" class="form-control" placeholder="Enter text here" maxlength="1500" id="textInput" oninput="generateQRCode()">
+        <button type="button" class="btn btn-outline-secondary" id="clear" onclick="clearField()" >Clear</button>
+        <button type="button" class="btn btn-primary" id="generate" onclick="generateQRCode()">Generate QR Code</button>
+      </div>
+      <div id="qrcode-container" class="text-center">
+        <canvas id="qrcode"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
