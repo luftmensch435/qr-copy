@@ -6,31 +6,32 @@ function onload() {
       textInput.blur();
     }
   });
-
 }
 
 function generateQRCode() {
+  let wordLimit = 1500;
   var textInput = document.getElementById("textInput").value;
-  if (textInput.trim()) {
-    textInput = textInput.trim();
+  textInput = textInput.trim();
+  if (textInput) {
+    if (textInput.length > wordLimit) {
+      document.getElementById("alert").style.visibility = "visible";
+    } else {
+      document.getElementById("alert").style.visibility = "hidden";
+    }
     let qrcode = document.getElementById("qrcode");
     qrcode.innerHTML = "";
     new QRious({
-      // TODO: adaptive size
       element: qrcode,
       value: textInput,
-      size: 128
+      size: 400
     });
   } else {
-    clearQRCode();
+    clearField();
   }
 }
 
 function clearField() {
   document.getElementById("textInput").value = "";
-  clearQRCode();
-}
-
-function clearQRCode() {
+  document.getElementById("alert").style.visibility = "hidden";
   document.getElementById("qrcode-container").innerHTML = '<canvas id="qrcode"></canvas>';
 }
