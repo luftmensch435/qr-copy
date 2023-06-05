@@ -13,15 +13,24 @@
     document.execCommand("copy");
   }
 
+  function decodeText(){
+    $("#textOutput").val(decodeURIComponent("{{text}}"));
+  }
+
   $(window).on("load", function () {
+    decodeText();
     adjustTextareaSize();
   });
 
 </script>
 
 <div>
-  <textarea type="text" class="form-control mb-4" id="textOutput" readonly>{{text}}</textarea>
-  <button type="button" class="btn btn-primary mb-4" onclick="copyToClipboard()">Copy to clipboard</button>
+  <textarea type="text" class="form-control mb-4" id="textOutput" readonly></textarea>
+  <div class="mb-4">
+    <a type="button" class="btn btn-outline-secondary" id="clear" href="{{url_for('copy')}}">Return</a>
+    <button type="button" class="btn btn-primary" onclick="copyToClipboard()">Copy to clipboard</button>
+  </div>
+
 </div>
 
 {% endblock %}
