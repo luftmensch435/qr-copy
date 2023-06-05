@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block content %}
+
+<script>
+  function adjustTextareaSize() {
+    var textarea = document.getElementById("textOutput");
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  }
+
+  function copyToClipboard() {
+    var textarea = document.getElementById("textOutput");
+    textarea.select(); // Select the textarea's content
+    // textarea.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand("copy");
+  }
+
+  window.onload = function () {
+    adjustTextareaSize();
+  };
+
+</script>
+
+<div>
+  <textarea type="text" class="form-control mb-4" id="textOutput" readonly>{{text}}</textarea>
+  <button type="button" class="btn btn-primary mb-4" onclick="copyToClipboard()">Copy to clipboard</button>
+</div>
+
+{% endblock %}

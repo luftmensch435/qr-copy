@@ -1,0 +1,58 @@
+{% extends "template.html" %}
+{% block content %}
+
+<script>
+  function generateQRCode() {
+    let wordLimit = 1500;
+    var textInput = document.getElementById("textInput").value;
+    textInput = textInput.trim();
+    if (textInput) {
+      if (textInput.length > wordLimit) {
+        document.getElementById("alert").style.visibility = "visible";
+      } else {
+        document.getElementById("alert").style.visibility = "hidden";
+      }
+      let qrcode = document.getElementById("qrcode");
+      qrcode.innerHTML = "";
+      new QRious({
+        element: qrcode,
+        value: textInput,
+        size: 400
+      });
+    } else {
+      clearField();
+    }
+  }
+
+  function clearField() {
+    document.getElementById("textInput").value = "";
+    document.getElementById("alert").style.visibility = "hidden";
+    document.getElementById("qrcode-container").innerHTML = '<canvas id="qrcode"></canvas>';
+  }
+
+  window.onload = function () {
+    let textInput = document.getElementById("textInput");
+    textInput.addEventListener("keypress", function (event) {
+      if (event.key === "Enter" || event.key === "Escape") {
+        event.preventDefault();
+        textInput.blur();
+      }
+    });
+  };
+
+</script>
+
+<div>
+  <textarea type="text" class="form-control mb-4" placeholder="Enter text here" id="textInput" maxlength="1501"
+    oninput="generateQRCode()"></textarea>
+  <div class="mb-4">
+    <button type="button" class="btn btn-outline-secondary" id="clear" onclick="clearField()">Clear</button>
+    <button type="button" class="btn btn-primary" id="generate" onclick="generateQRCode()">Generate QR Code</button>
+  </div>
+</div>
+
+<div id="qrcode-container" class="text-center">
+  <canvas id="qrcode"></canvas>
+</div>
+
+{% endblock %}
