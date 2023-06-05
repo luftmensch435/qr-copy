@@ -10,7 +10,7 @@ function generateQRCode() {
     $("#qrcode").html("");
     new QRious({
       element: document.getElementById("qrcode"),
-      value: "{{url_for(copy)}}" + "/" + encodeURIComponent(text),
+      value: location.protocol + '//' + location.host + location.pathname + "?text=" + encodeURIComponent(text),
       size: 400
     });
   } else {
