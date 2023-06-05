@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block content %}
+
+<script>
+  $(window).on("load", function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('text')) {
+      $("textarea").val(decodeURIComponent(urlParams.get('text')));
+      adjustTextareaSize();
+    }
+
+    $("textarea").on("keypress", function (event) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        $("textarea").blur();
+      }
+    });
+  });
+</script>
+
+<div>
+  <textarea type="text" class="form-control mb-4" placeholder="Enter text here" maxlength="1501" rows="4"
+    oninput="generateQRCode()" style="resize: none;"></textarea>
+  <div class="mb-4">
+    <button type="button" class="btn btn-outline-secondary" id="clear" onclick="clearField()">Clear Text</button>
+    <button type="button" class="btn btn-primary" id="generate" onclick="generateQRCode()">Generate QR Code</button>
+    <button type="button" class="btn btn-primary" onclick="copyToClipboard()">Copy to clipboard</button>
+  </div>
+</div>
+
+<div id="qrcode-container" class="text-center">
+  <canvas id="qrcode"></canvas>
+</div>
+
+{% endblock %}

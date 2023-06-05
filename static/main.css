@@ -1,9 +1,0 @@
-#alert {
-  visibility: hidden;
-}
-
-#textOutput {
-  resize: none;
-  overflow: hidden;
-  height: auto;
-}
