@@ -3,21 +3,19 @@
 
 <script>
   function adjustTextareaSize() {
-    var textarea = document.getElementById("textOutput");
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + "px";
+    $("#textOutput").css("height", "auto");
+    $("#textOutput").css("height", $("#textOutput").prop("scrollHeight") + "px");
   }
 
   function copyToClipboard() {
-    var textarea = document.getElementById("textOutput");
-    textarea.select(); // Select the textarea's content
+    $("#textOutput").select(); // Select the textarea's content
     // textarea.setSelectionRange(0, 99999); // For mobile devices
     document.execCommand("copy");
   }
 
-  window.onload = function () {
+  $(window).on("load", function () {
     adjustTextareaSize();
-  };
+  });
 
 </script>
 
