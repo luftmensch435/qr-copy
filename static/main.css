@@ -1,0 +1,17 @@
+#generate {
+  --bs-btn-bg: #1d7874;
+  --bs-btn-border-color: #1d7874;
+  --bs-btn-hover-bg: #124d4a;
+  --bs-btn-hover-border-color: #124d4a;
+  --bs-btn-active-bg: #249691;
+  --bs-btn-active-border-color: #249691;
+}
+
+#copy {
+  --bs-btn-bg: #679289;
+  --bs-btn-border-color: #679289;
+  --bs-btn-hover-bg: #598077;
+  --bs-btn-hover-border-color: #598077;
+  --bs-btn-active-bg: #81b8ac;
+  --bs-btn-active-border-color: #81b8ac;
+}

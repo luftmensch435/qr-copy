@@ -19,17 +19,13 @@
 </script>
 
 <div>
-  <textarea type="text" class="form-control mb-4" placeholder="Enter text here" maxlength="1501" rows="4"
+  <textarea type="text" class="form-control mb-4" placeholder="Enter text here" maxlength="1501" rows="4" id="textarea"
     oninput="generateQRCode()" style="resize: none;"></textarea>
   <div class="mb-4">
-    <button type="button" class="btn btn-outline-secondary" id="clear" onclick="clearField()">Clear Text</button>
-    <button type="button" class="btn btn-primary" id="generate" onclick="generateQRCode()">Generate QR Code</button>
-    <button type="button" class="btn btn-primary" onclick="copyToClipboard()">Copy to clipboard</button>
+    <button type="button" class="btn btn-outline-secondary mb-2" id="clear" onclick="clearField()">Clear Text</button>
+    <button type="button" class="btn btn-primary mb-2" id="generate" onclick="generateQRCode()">Generate QR Code</button>
+    <button type="button" class="btn btn-primary mb-2" id="copy" onclick="copyToClipboard()">Copy to clipboard</button>
   </div>
-</div>
-
-<div id="qrcode-container" class="text-center">
-  <canvas id="qrcode"></canvas>
 </div>
 
 {% endblock %}
