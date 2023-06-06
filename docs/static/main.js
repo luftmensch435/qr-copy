@@ -11,7 +11,7 @@ function generateQRCode() {
     new QRious({
       element: document.getElementById("qrcode"),
       value: location.protocol + '//' + location.host + location.pathname + "?text=" + encodeURIComponent(text),
-      size: 400
+      size: Math.min(window.innerWidth-33, 400)
     });
   } else {
     clearField();
@@ -19,9 +19,12 @@ function generateQRCode() {
 }
 
 function copyToClipboard() {
-  $("textarea").select(); // Select the textarea's content
-  // textarea.setSelectionRange(0, 99999); // For mobile devices
-  document.execCommand("copy");
+  var copyText = document.getElementById("textarea");
+  copyText.select(); 
+  copyText.setSelectionRange(0, 99999); 
+  navigator.clipboard.writeText(copyText.value);
+
+  // copyText.blur();
 }
 
 function clearField() {
